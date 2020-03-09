@@ -1,0 +1,14 @@
+
+# title menu items definition
+entity.smile.collection:
+  title: 'title list'
+  route_name: entity.smile.collection
+  description: 'List title entities'
+  parent: system.admin_structure
+  weight: 100
+
+smile.admin.structure.settings:
+  title: 'title settings'
+  description: 'Configure title entities'
+  route_name: smile.settings
+  parent: system.admin_structure

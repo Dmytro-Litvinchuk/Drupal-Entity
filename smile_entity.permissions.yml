@@ -1,0 +1,20 @@
+add title entities:
+  title: 'Create new title entities'
+
+administer title entities:
+  title: 'Administer title entities'
+  description: 'Allow to access the administration form to configure title entities.'
+  restrict access: true
+
+delete title entities:
+  title: 'Delete title entities'
+
+edit title entities:
+  title: 'Edit title entities'
+
+view published title entities:
+  title: 'View published title entities'
+
+view unpublished title entities:
+  title: 'View unpublished title entities'
+

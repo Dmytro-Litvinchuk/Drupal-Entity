@@ -1,0 +1,5 @@
+entity.smile.add_form:
+  route_name: entity.smile.add_form
+  title: 'Add title'
+  appears_on:
+    - entity.smile.collection

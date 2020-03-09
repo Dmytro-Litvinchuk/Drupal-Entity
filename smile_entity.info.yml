@@ -1,0 +1,5 @@
+name: 'Smile Entity'
+type: module
+description: 'Custom Entity(Practice)'
+core: 8.x
+package: 'Custom'

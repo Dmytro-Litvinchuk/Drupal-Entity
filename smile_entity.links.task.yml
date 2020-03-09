@@ -1,0 +1,21 @@
+# title routing definition
+smile.settings_tab:
+  route_name: smile.settings
+  title: 'Settings'
+  base_route: smile.settings
+
+entity.smile.canonical:
+  route_name: entity.smile.canonical
+  base_route: entity.smile.canonical
+  title: 'View'
+
+entity.smile.edit_form:
+  route_name: entity.smile.edit_form
+  base_route: entity.smile.canonical
+  title: 'Edit'
+
+entity.smile.delete_form:
+  route_name:  entity.smile.delete_form
+  base_route:  entity.smile.canonical
+  title: Delete
+  weight: 10
