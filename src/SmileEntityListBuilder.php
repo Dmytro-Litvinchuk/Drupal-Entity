@@ -19,6 +19,7 @@ class SmileEntityListBuilder extends EntityListBuilder {
   public function buildHeader() {
     $header['id'] = $this->t('title ID');
     $header['name'] = $this->t('title');
+    $header['body'] = $this->t('body');
     return $header + parent::buildHeader();
   }
 
@@ -33,6 +34,7 @@ class SmileEntityListBuilder extends EntityListBuilder {
       'entity.smile.canonical',
       ['smile' => $entity->id()]
     );
+    $row['body'] = mb_strimwidth(strip_tags($entity->body->value), 0, 75, '...');
     return $row + parent::buildRow($entity);
   }
 

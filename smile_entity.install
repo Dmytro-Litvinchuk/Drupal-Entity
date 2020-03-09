@@ -1,0 +1,10 @@
+<?php
+
+use Drupal\Core\Field\BaseFieldDefinition;
+
+/**
+ * Implements hook_update_N().
+ */
+function smile_entity_update_8101() {
+  
+}
