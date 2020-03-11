@@ -20,28 +20,30 @@ class SmileEntityAccessControlHandler extends EntityAccessControlHandler {
   protected function checkAccess(EntityInterface $entity, $operation, AccountInterface $account) {
     /** @var \Drupal\smile_entity\Entity\SmileEntityInterface $entity */
 
-    switch ($operation) {
+    // Check entity role before get access.
+    if (in_array($entity->get('role')->getString(), $account->getRoles())) {
+      switch ($operation) {
 
-      case 'view':
+        case 'view':
 
-        if (!$entity->isPublished()) {
-          return AccessResult::allowedIfHasPermission($account, 'view unpublished title entities');
-        }
+          if (!$entity->isPublished()) {
+            return AccessResult::allowedIfHasPermission($account, 'view unpublished title entities');
+          }
 
+          return AccessResult::allowedIfHasPermission($account, 'view published title entities');
 
-        return AccessResult::allowedIfHasPermission($account, 'view published title entities');
+        case 'update':
 
-      case 'update':
+          return AccessResult::allowedIfHasPermission($account, 'edit title entities');
 
-        return AccessResult::allowedIfHasPermission($account, 'edit title entities');
+        case 'delete':
 
-      case 'delete':
-
-        return AccessResult::allowedIfHasPermission($account, 'delete title entities');
+          return AccessResult::allowedIfHasPermission($account, 'delete title entities');
+      }
     }
 
     // Unknown operation, no opinion.
-    return AccessResult::neutral();
+    return AccessResult::forbidden();
   }
 
   /**

@@ -142,6 +142,29 @@ class SmileEntity extends ContentEntityBase implements SmileEntityInterface {
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayConfigurable('view', TRUE);
 
+    $fields['role'] = BaseFieldDefinition::create('entity_reference')
+      ->setLabel(t('User Role'))
+      ->setDescription(t('The role of the associated user.'))
+      ->setSetting('target_type', 'user_role')
+      ->setSetting('handler', 'default')
+      ->setDisplayOptions('view', [
+        'label' => 'above',
+        'type' => 'entity_reference_label',
+        'weight' => -3,
+      ])
+      ->setDisplayOptions('form', [
+        'type' => 'entity_reference_autocomplete',
+        'settings' => [
+          'match_operator' => 'CONTAINS',
+          'size' => 60,
+          'autocomplete_type' => 'tags',
+          'placeholder' => '',
+        ],
+        'weight' => -3,
+      ])
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayConfigurable('view', TRUE);
+
     $fields['status']->setDescription(t('A boolean indicating whether the title is published.'))
       ->setDisplayOptions('form', [
         'type' => 'boolean_checkbox',
