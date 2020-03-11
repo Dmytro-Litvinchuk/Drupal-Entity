@@ -40,9 +40,10 @@ class SmileEntityAccessControlHandler extends EntityAccessControlHandler {
 
           return AccessResult::allowedIfHasPermission($account, 'delete title entities');
       }
+      // Unknown operation, no opinion.
+      return AccessResult::neutral();
     }
-
-    // Unknown operation, no opinion.
+    // User have not access for the entity.
     return AccessResult::forbidden();
   }
 
