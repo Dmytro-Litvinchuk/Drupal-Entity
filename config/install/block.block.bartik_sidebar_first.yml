@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - smile_entity
+  theme:
+    - bartik
+id: bartik_sidebar_first
+theme: bartik
+region: sidebar_first
+weight: 0
+provider: Custom
+plugin: smile_block
+settings:
+  id: smile_block
+  label: 'Smile block'
+  provider: Custom
+  label_display: '0'
+visibility: {  }
