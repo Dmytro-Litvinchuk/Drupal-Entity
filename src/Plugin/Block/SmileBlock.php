@@ -141,4 +141,11 @@ class SmileBlock extends BlockBase implements ContainerFactoryPluginInterface {
     return Cache::mergeContexts(parent::getCacheContexts(), ['user.roles']);
   }
 
+  /**
+   * @inheritDoc
+   */
+  public function getCacheMaxAge() {
+    return 21600;
+  }
+
 }

@@ -1,0 +1,5 @@
+services:
+  my_access_events_subscriber:
+    class: '\Drupal\smile_entity\EventSubscriber\AccessEventsSubscriber'
+    tags:
+      - { name: 'event_subscriber'}
