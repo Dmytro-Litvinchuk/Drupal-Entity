@@ -14,8 +14,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *
  * @Block(
  *  id = "smile_block",
- *  admin_label = @Translation("Smile block"),
  *  category = @Translation("Custom"),
+ *  deriver = "Drupal\smile_entity\Plugin\Derivative\RoleSmileBlockDeriver",
  * )
  */
 class SmileBlock extends BlockBase implements ContainerFactoryPluginInterface {
@@ -104,8 +104,10 @@ class SmileBlock extends BlockBase implements ContainerFactoryPluginInterface {
    * @inheritDoc
    */
   public function build() {
+    // Get count(or something another) with config block form.
     $config = $this->getConfiguration();
-    $current_user = \Drupal::currentUser();
+    // Dynamic load block for user role.
+/*    $current_user = \Drupal::currentUser();
     $roles = $current_user->getRoles();
     // If user have more than 1 role.
     if (count($roles) > 1) {
@@ -113,13 +115,18 @@ class SmileBlock extends BlockBase implements ContainerFactoryPluginInterface {
     }
     else {
       $role = $roles[0];
-    }
-    $query = $this->entityManager->getStorage('smile')->getQuery()->condition('role', $role);
+    }*/
+    // Dynamic role with plugin derivatives.
+    $role = $this->getDerivativeId();
+    $entity_type = 'smile';
+    // Only entities for one role.
+    $query = $this->entityManager->getStorage($entity_type)->getQuery()
+      ->condition('role', $role);
     $query->sort('created', 'DESC');
+    // Elements count.
     $query->range(0, $config['count']);
     $ids = $query->execute();
     if (isset($ids)) {
-      $entity_type = 'smile';
       $storage = $this->entityManager->getStorage($entity_type);
       $smile = $storage->loadMultiple($ids);
       $view_mode = 'rss';
